@@ -141,7 +141,7 @@ if len(find_close_match) > 0:
 
     #Ordenar de manera descendente las similitudes con las pelpiculas
     sorted_similar_movies = sorted(similarity_score, key=lambda x: x[1], reverse=True)
-
+ 
     #Ajusta el valor del margen según del título de número de películas
     margin_value = "-50px"
 
