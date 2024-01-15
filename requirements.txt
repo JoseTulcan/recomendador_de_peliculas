@@ -1,3 +1,6 @@
 streamlit
+pandas
+difflib
 scikit-learn
---upgrade --force-reinstall scikit-learn
+base64
+plotly
