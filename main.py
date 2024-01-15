@@ -201,7 +201,7 @@ else:
             border: 2px solid #8b0000; /* Color del borde */
             color: #8b0000; /* Color del texto */
         }
-    </style>
+    </style> 
     """
 
     # Inyectar estilos CSS
