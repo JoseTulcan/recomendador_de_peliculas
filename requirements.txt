@@ -1,2 +1,3 @@
 streamlit
 scikit-learn
+--upgrade --force-reinstall scikit-learn
