@@ -1,12 +1,13 @@
 import streamlit as st
 import pandas as pd
 import difflib
+#from nltk import TfidfVectorizer
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 import base64
 import plotly.express as px
 
-df = px.data.iris()
+df = px.data.iris() 
 
 @st.cache_data
 def get_img_as_base64(file):
