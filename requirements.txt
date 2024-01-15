@@ -1,6 +1,6 @@
-streamlit
-pandas
+streamlit==1.30.0
+pandas==2.1.4
 difflib
-scikit-learn
+scikit-learn==1.3.2
 base64
-plotly
+plotly==5.18.0
