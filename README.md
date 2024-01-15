@@ -41,7 +41,7 @@ Dado que ya se tiene la lista de películas similares, es decir las que se va a 
 
 ## Resultados
 Se hicieron diferentes pruebas con seleccionando o ingresando diferentes películas de la base de datos, y para los diferentes casos se pudo observar que el algoritmo entrega otros títulos de películas en orden descendente por su similitud en las características de las películas que fueron seleccionadas. Además la interfaz permite aumnetar o disminuir correctamente el número de películas recomendadas.
-
+ 
 Se muestra a continuación la interfaz de este proyecto de recomendadr de películas.
 
 [![Imagen representativa](img/interfaz1.JPG)](img/interfaz1.JPG)
