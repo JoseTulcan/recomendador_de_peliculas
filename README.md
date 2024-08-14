@@ -1,9 +1,8 @@
 # RECOMENDADOR DE PELÍCULAS CON MACHINE LEARNING. 
-# Proyecto final - Asignatura: Automatización y Control
 
-## Creadores:
+## Creador:
 
-### José Luis Mera Tulcán - Deyson Mauricio Laos S.
+### José Luis Mera Tulcán
 
 Este proyecto consiste en la elaboración de un recomendador de películas usando el algoritmo Cosine similarity con una interfaz creada mediante Streamlit
 
