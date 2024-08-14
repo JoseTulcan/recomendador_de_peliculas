@@ -5,6 +5,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 import base64
 import plotly.express as px
+import os 
 
 df = px.data.iris() 
 
@@ -14,12 +15,15 @@ def get_img_as_base64(file):
         data = f.read()
     return base64.b64encode(data).decode()
 
-img = get_img_as_base64("./img/fondo.jpg")
+# img = get_img_as_base64("img/fondo.jpg")
+
+img_path = os.path.join(os.getcwd(), "img/fondo.jpg")
+img = get_img_as_base64(img_path)
 
 page_bg_img = f"""
 <style>
 [data-testid="stAppViewContainer"] > .main {{
-    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("https://raw.githubusercontent.com/JoseTulcan/proyecto-final-automatizacion-y-control/7477858c19d499677d0f28b20490f561ebb8dcfd/fondo.jpg");
+    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("data:image/png;base64,{img}");
     background-size: 100%;
     background-position: top left;
     background-repeat: repeat;
@@ -52,11 +56,53 @@ title_style = """
     font-weight: bold;     /* Cambiar el grosor del título a negrita */
 """
 
+
 # Configuraciones para el subtítulo
 subtitle_style = """
-    color: white;           /* Cambiar el color del subtítulo (por ejemplo, a azul) */
+    color: black;           /* Cambiar el color del subtítulo (por ejemplo, a negro) */
     font-size: 24px;       /* Cambiar el tamaño del subtítulo (por ejemplo, a 24px) */
     font-weight: bold;     /* Cambiar el grosor del subtítulo a negrita */
+"""
+
+# Añadir estilos específicos para modo claro
+light_mode_css = """
+<style>
+    /* Estilo para la caja de selección y títulos */
+    .stSelectbox label, .stMarkdown h2, .stMarkdown h3, .stMarkdown h4, .stMarkdown h5, .stMarkdown h6, .stHeader {
+        color: black !important; /* Cambiar color del texto a negro */
+    }
+
+    /* Estilo para el texto de las películas recomendadas */
+    .stMarkdown h4 {
+        color: black !important; /* Cambiar color del texto a negro */
+    }
+</style>
+"""
+
+# Añadir estilos específicos para modo oscuro
+dark_mode_css = """
+<style>
+    /* Estilo para la caja de selección y títulos */
+    .stSelectbox label, .stMarkdown h2, .stMarkdown h3, .stMarkdown h4, .stMarkdown h5, .stMarkdown h6, .stHeader {
+        color: white !important; /* Cambiar color del texto a blanco */
+    }
+
+    /* Estilo para el texto de las películas recomendadas */
+    .stMarkdown h4 {
+        color: white !important; /* Cambiar color del texto a blanco */
+    }
+</style>
+"""
+
+# Estilo CSS para cambiar el color de los títulos de las películas recomendadas
+movie_title_css = """
+<style>
+    .movie-title {
+        color: black !important;  /* Cambiar a blanco para modo oscuro */
+        font-weight: bold;  /* Poner en negrita */
+        font-size: 24px;  /* Cambiar tamaño de la fuente si es necesario */
+    }
+</style>
 """
 
 # Mostrar el título de página
@@ -69,6 +115,16 @@ st.markdown(
     unsafe_allow_html=True
 )
 
+# Detectar si el modo es claro u oscuro y aplicar el CSS correspondiente
+if st.get_option('theme.base') == 'light':
+    st.markdown(light_mode_css, unsafe_allow_html=True)
+    st.markdown(movie_title_css, unsafe_allow_html=True)
+
+else:
+    st.markdown(dark_mode_css, unsafe_allow_html=True)
+    movie_title_css = movie_title_css.replace("black", "white")  # Cambiar color a blanco para modo oscuro
+    st.markdown(movie_title_css, unsafe_allow_html=True)
+    
 # Carga de datos
 movies_data = pd.read_csv('./datos_kaggle/movies.csv')
 
@@ -186,7 +242,10 @@ if len(find_close_match) > 0:
 
         #Mostrar título y enlace de cada película recomendada
         with cols[i % 4]:
-            st.header(title)
+            #st.header(title)
+            #st.write(f"IMDB: {imdb_link}")
+
+            st.markdown(f'<div class="movie-title">{title}</div>', unsafe_allow_html=True)
             st.write(f"IMDB: {imdb_link}")
         
 else:  
