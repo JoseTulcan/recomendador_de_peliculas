@@ -1,9 +1,5 @@
 # RECOMENDADOR DE PELÍCULAS CON MACHINE LEARNING. 
 
-## Creador:
-
-### José Luis Mera Tulcán
-
 ### RECOMENDADOR DISPONIBLE EN:  https://recomendadordepeliculas-jmcmtrxhs3rxjzxsjr8kcf.streamlit.app/
 
 Este proyecto consiste en la elaboración de un recomendador de películas usando el algoritmo Cosine similarity con una interfaz creada mediante Streamlit
